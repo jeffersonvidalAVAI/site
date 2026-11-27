@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@font-face {
+	fonte-family:"rye";
+	src:url("Rye-Regular.woff2")
+		format("woff2");
+	font-weight:bold;
+	font-style:normal;
+}
+
+#container{
+	fonte-family:rye;
+	background:;
+	width:960px;
+	margin:0 auto ;
+	padding: 10px;
+	display:flex;
+	flex-direction: row;
+	flex-direction: column;
+}
+
+#link{
+background: linear-gradient(to bottom, #4a9cff, #0A3D9E);
+color: white;
+text-decoration: none;
+font-weight: bold;
+text-transform: uppercase;
+font-size: 14px;
+padding: 12px 18px;
+border-radius: 8px;
+white-space: nowrap;
+border: 2px solid white;
+box-shadow: 0px 4px 0px #062a6e, 0px 4px 8px rgba(0,0,0,0.3);
+}
+
+#link:hover {
+background: white;
+color: #0A3D9E;
+border: 2px solid #0A3D9E;
+}
+
+#logo {
+		font-family:anton;
+		font-size:38px;
+		color:white;
+		background:linear-gradient (to bottom,#4a9cf7 ,#0A3D9E);
+		border:2px solid white;
+}
+
+#container-texto::first-line {
+	color: green;
+	text-transform : uppercase;
+}
+
+.texto-destaque{
+	font-weight:bold;
+}
+
+ul  {
+	list-style: none;
+	padding: 0;
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	gap:10px;
+	justify-content:center;
+	margin-bottom: 10px;
+}
+
+ul li {
+	color:white;
+	font-weight: bold;
+	white-space:nowrap;
+}
+
+#link{
+	color:white;
+	text-decoration: none;
+	font-weight:bold;
+}
+
+ul li + li::before{
+	content:"/";
+	margin-right:10px;
+	color:white;
+}
+
+/* ===== SÓ ESSA PARTE É NOVA - SÓ VALE NO CELULAR ===== */
+@media (max-width: 768px){
+  #container { width:100% !important; }
+  #caixaLogin { position:relative !important; left:auto !important; top:auto !important; margin:10px auto !important; width:90% !important; max-width:320px !important; }
+  img[src*="leao"] { position:relative !important; left:auto !important; right:auto !important; top:auto !important; width:90% !important; max-width:380px !important; display:block; margin:10px auto !important; }
+  #container > div { flex-wrap:wrap !important; justify-content:center !important; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- CAIXA DE LOGIN -->
+<div id="caixaLogin" style="position:absolute; left:20px; top:520px; width:170px; 
+background:white; border:2px solid #003399; border-radius:12px; padding:8px; 
+box-shadow:0 3px 10px rgba(0,0,0,0.15); z-index:1000; font-family:Arial;">
+  <h3 style="text-align:center; color:#003399; margin:0 0 15px 0;">🦁 LOGIN</h3>
+  
+  <div id="formLogin">
+    <label style="font-size:13px; font-weight:bold;">E-mail:</label><br>
+    <input id="emailLogin" type="email" placeholder="seu@email.com" style="width:100%; 
+	padding:6px; margin:2px 0 6px 0; border:1px solid #ccc; border-radius:8px; box-sizing:border-box;"><br>
+    
+    <label style="font-size:13px; font-weight:bold;">Senha:</label><br>
+    <input id="senhaLogin" type="password" placeholder="Sua senha" style="width:100%; padding:6px; margin:2px 0 8px 0; 
+	border:1px solid #ccc; border-radius:8px; box-sizing:border-box;"><br>
+    
+    <button onclick="fazerLogin()" style="width:100%; background:#003399; color:white; 
+	border:none; padding:8px; border-radius:8px; font-weight:bold; cursor:pointer;">ENTRAR</button>
+    
+    <p style="text-align:center; font-size:13px; margin:15px 0 0 0;">Não tem conta? <a href="#" onclick="mostrarCadastro(); 
+	return false;" style="color:#003399; font-weight:bold;">Cadastre-se</a></p>
+  </div>
+
+  <div id="formCadastro" style="display:none;">
+    <label style="font-size:13px; font-weight:bold;">Nome:</label><br>
+    <input id="nomeCad" type="text" placeholder="Seu nome" style="width:100%; padding:10px; margin:5px 0 10px 0; border:1px solid #ccc; border-radius:8px; box-sizing:border-box;"><br>
+    <label style="font-size:13px; font-weight:bold;">E-mail:</label><br>
+    <input id="emailCad" type="email" placeholder="seu@email.com" style="width:100%; padding:10px; margin:5px 0 10px 0; border:1px solid #ccc; border-radius:8px; box-sizing:border-box;"><br>
+    <label style="font-size:13px; font-weight:bold;">Senha:</label><br>
+    <input id="senhaCad" type="password" placeholder="Crie uma senha" style="width:100%; padding:10px; margin:5px 0 15px 0; border:1px solid #ccc; border-radius:8px; box-sizing:border-box;"><br>
+    <button onclick="fazerCadastro()" style="width:100%; background:#28a745; color:white; border:none; padding:12px; border-radius:8px; font-weight:bold; cursor:pointer;">CADASTRAR</button>
+    <p style="text-align:center; font-size:13px; margin:15px 0 0 0;"><a href="#" onclick="mostrarLogin(); return false;" style="color:#003399; font-weight:bold;">Já tenho conta</a></p>
+  </div>
+
+  <div id="logado" style="display:none; text-align:center;">
+    <p style="font-weight:bold; color:#003399;">Bem-vindo, <span id="nomeUsuario"></span>!</p>
+    <button onclick="sair()" style="background:#dc3545; color:white; border:none; padding:10px 20px; border-radius:8px; cursor:pointer;">SAIR</button>
+  </div>
+</div>
+
+<script>
+function mostrarCadastro(){
+  document.getElementById('formLogin').style.display='none';
+  document.getElementById('formCadastro').style.display='block';
+}
+function mostrarLogin(){
+  document.getElementById('formCadastro').style.display='none';
+  document.getElementById('formLogin').style.display='block';
+}
+function fazerCadastro(){
+  let nome = document.getElementById('nomeCad').value;
+  let email = document.getElementById('emailCad').value;
+  let senha = document.getElementById('senhaCad').value;
+  if(!nome || !email || !senha){ alert('Preencha tudo!'); return; }
+  localStorage.setItem('usuario_'+email, JSON.stringify({nome:nome, senha:senha}));
+  alert('Cadastro feito! Agora faça login!');
+  mostrarLogin();
+}
+function fazerLogin(){
+  let email = document.getElementById('emailLogin').value;
+  let senha = document.getElementById('senhaLogin').value;
+  let dados = localStorage.getItem('usuario_'+email);
+  if(!dados){ alert('Você ainda não tem cadastro! Clique em Cadastre-se'); return; }
+  let user = JSON.parse(dados);
+  if(user.senha === senha){
+    document.getElementById('formLogin').style.display='none';
+    document.getElementById('logado').style.display='block';
+    document.getElementById('nomeUsuario').innerText = user.nome;
+  } else { alert('Senha errada!'); }
+}
+function sair(){
+  document.getElementById('logado').style.display='none';
+  document.getElementById('formLogin').style.display='block';
+}
+</script>
+
+<style>
+@keyframes flutuar { 0% { transform:translateY(-50%) translateY(0px); } 
+50% { transform:translateY(-50%) translateY(-15px); } 100% { transform:translateY(-50%) translateY(0px); } }
+</style>
+<img src="leao.jpg.png.png" style="position:absolute; right:150px; top:580px; width:380px; z-index:999;">
+<img src="leao2.jpg.jpg.jpg" style="position:absolute; left:190px; top:580px; width:380px; z-index:999;">
+	
+	
+	<div style="blackground-color:white;text-aligm: center;padding:0; margim:0;width:100%;" >
+<img src="logo.jpg.jpeg" style="widht:100%;max-width:100%;height:auto;display:block;border:2px solid white;
+border-radius:8px;box-shadow:0px 4px 0px #062a6e,0px 4px 8px rgba(0,0,0,0,3); box-sizing:border-box;"
+</div>
+
+	<div id="container">
+	
+	
+	<div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 5px;align-items:center;">
+	
+	<a href = "#" id= "link" > ACESSÓRIOS </a>
+	<a href = "#" id= "link" > CAMISETAS</a>
+	<a href = "#" id= "link" > MOLETOM </a>
+	<a href = "#" id= "link" > CALÇAS </a>
+	<a href = "#" id= "link" > BERMUDAS</a>
+	<a href = "#" id= "link" > BONÉS </a>
+	<a href = "#" id= "link" > INFANTIL </a>
+	<a href = "#" id= "link" > LINHA CASUAL </a>
+	<select id="listaMusicas" onchange="tocarMusica()" style="background:#0A3D9E; color:white; 
+	font-weight:bold; font-size:13px; padding:8px 5px; border:2px solid gold; border-radius:8px; cursor:pointer;">
+  <option value="">🎵 MÚSICAS</option>
+  <option value="hino.mp3.mp3">Hino da Império</option>
+  <option value="imperio.mp3.mp3">O caldeirão vai ferver</option>
+  <option value="terror.mp3.mp3">Terror da capital</option>
+  <option value="flow.mp3.mp3">Deixa o grave bater</option>
+    <option value="flow.mp3.mp3">Deixa o grave bater</option>
+   <option value="audio4.mp3.mp3">Família império Azurra</option>
+</select>
+<button id="btnPlayPause" onclick="pausarTocar()" style="padding:6px 8px; 
+background:#0A3D91; color:white; border:none; border-radius:8px; font-size:16px; cursor:pointer;">⏸️</button>
+<audio id="tocador" controls style="width:130px; height:32px;"></audio>
+	
+	 
+	</div>
+	<script>
+	function tocarMusica() {
+  var escolha = document.getElementById("listaMusicas").value;
+  var tocador = document.getElementById("tocador");
+  tocador.src = escolha;
+  tocador.play();
+  document.getElementById("btnPlayPause").innerHTML = '⏸️ ';
+}
+	
+function pausarTocar() {
+  var tocador = document.getElementById("tocador");
+  var btn = document.getElementById("btnPlayPause");
+  if (tocador.paused) {
+    tocador.play();
+    btn.innerHTML = '⏸️';
+  } else {
+    tocador.pause();
+    btn.innerHTML = '▶️';
+  }
+}
+</script>
+	
+	<div style="max-width: 850px; margin: 0 auto; text-align: center; padding: 20px;">
+	
+	<h5 style="font-family:'Pirata One', cursive; font-size:78px; line-height:0.95; 
+	text-align:center; color:#0A3D9E; letter-spacing:1px; margin:0; margin-top:35px; 
+	position:relative; z-index:10; text-shadow:2px 2px 0px white, 5px 5px 0px #062a6e, 
+	7px 7px 12px rgba(0,0,0,0.5); -webkit-text-stroke:0.5px white;">BEM VINDO</h5>
+	
+	<p id= "container-texto" >
+	
+	
+    <p style="text-align: center; line-height: 1.6; font-size: 17px;">
+  <mark><p style="text-align: center; line-height: 1.6; font-size: 17px;">
+  
+
+	</div>
+	
+	<div style="text-align: center; margin-top: 20px;">
+  <h2 style="color: white; font-family: Arial; text-shadow: 2px 2px 0px #062a6e;">HINO DA IMPÉRIO</h2>
+
+<audio id="hino" src="hino.mp3.mp3"></audio>
+<button onclick="tocarHino()" id="botaoHino" style="background:white; color:#0b4db3; border:none; 
+padding:12px 25px; font-size:18px; font-weight:bold; border-radius:30px; cursor:pointer;">
+  ▶️ TOCAR HINO DA IMPÉRIO
+</button>
+
+
+<script>
+function tocarMusica() {
+  var lista = document.getElementById("listaMusicas");
+  var tocador = document.getElementById("tocador");
+  if (lista.value != "") {
+    tocador.src = lista.value;
+    tocador.play();
+  }
+}
+</script>
+<script>
+  let tocando = false;
+  function tocarHino() {
+    let audio = document.getElementById('hino');
+    let botao = document.getElementById('botaoHino');
+    if (tocando) {
+      audio.pause();
+      botao.innerHTML = '▶️ TOCAR HINO DO LEÃO';
+      tocando = false;
+    } else {
+      audio.play();
+      botao.innerHTML = '⏸️ PAUSAR HINO';
+      tocando = true;
+    }
+  }
+</script>
+
+	
+
+  <p style="color: white; font-size: 14px;">Aperte para ouvir o hino do Avaí</p>
+</div>
+
+	
+	</p>
+	
+	<UL>  	
+	<li> Gerenciamento de Peso </li>
+	<li> Depilação Definitiva </li>
+	<li> Sorriso Gengival	</li>
+	<li> Tratamento de Controle de melasma </li>
+	<li> Fios Lisos de PDO   </li>
+	<li>  Cursos Práticos para Iniciantes  </li>
+	<li>  Preenchimento Labial  </li>
+	<li>   Botox  </li>
+	</UL>
+	
+	</div>
+
+</body>
+</html>
