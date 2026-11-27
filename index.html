@@ -3,7 +3,6 @@
 <head>
 <link href="https://fonts.googleapis.com/css2?family=Pirata+One&display=swap" rel="stylesheet">
 
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 @font-face {
@@ -182,12 +181,12 @@ function sair(){
 @keyframes flutuar { 0% { transform:translateY(-50%) translateY(0px); } 
 50% { transform:translateY(-50%) translateY(-15px); } 100% { transform:translateY(-50%) translateY(0px); } }
 </style>
-<img src="leao.jpg.png.png" style="position:absolute; right:150px; top:580px; width:380px; z-index:999;">
-<img src="leao2.jpg.jpg.jpg" style="position:absolute; left:190px; top:580px; width:380px; z-index:999;">
+<img src="leao.jpg" style="position:absolute; right:150px; top:580px; width:380px; z-index:999;">
+<img src="leao2.jpg" style="position:absolute; left:190px; top:580px; width:380px; z-index:999;">
 	
 	
 	<div style="blackground-color:white;text-aligm: center;padding:0; margim:0;width:100%;" >
-<img src="logo.jpg.jpeg" style="widht:100%;max-width:100%;height:auto;display:block;border:2px solid white;
+<img src="logo.jpg" style="widht:100%;max-width:100%;height:auto;display:block;border:2px solid white;
 border-radius:8px;box-shadow:0px 4px 0px #062a6e,0px 4px 8px rgba(0,0,0,0,3); box-sizing:border-box;"
 </div>
 
@@ -207,12 +206,11 @@ border-radius:8px;box-shadow:0px 4px 0px #062a6e,0px 4px 8px rgba(0,0,0,0,3); bo
 	<select id="listaMusicas" onchange="tocarMusica()" style="background:#0A3D9E; color:white; 
 	font-weight:bold; font-size:13px; padding:8px 5px; border:2px solid gold; border-radius:8px; cursor:pointer;">
   <option value="">🎵 MÚSICAS</option>
-  <option value="hino.mp3.mp3">Hino da Império</option>
-  <option value="imperio.mp3.mp3">O caldeirão vai ferver</option>
-  <option value="terror.mp3.mp3">Terror da capital</option>
-  <option value="flow.mp3.mp3">Deixa o grave bater</option>
-    <option value="flow.mp3.mp3">Deixa o grave bater</option>
-   <option value="audio4.mp3.mp3">Família império Azurra</option>
+  <option value="hino.mp3">Hino da Império</option>
+  <option value="imperio.mp3">O caldeirão vai ferver</option>
+  <option value="terror.mp3">Terror da capital</option>
+  <option value="flow.mp3">Deixa o grave bater</option>
+   <option value="Audio4.mp3">Família império Azurra</option>
 </select>
 <button id="btnPlayPause" onclick="pausarTocar()" style="padding:6px 8px; 
 background:#0A3D91; color:white; border:none; border-radius:8px; font-size:16px; cursor:pointer;">⏸️</button>
@@ -261,12 +259,11 @@ function pausarTocar() {
 	<div style="text-align: center; margin-top: 20px;">
   <h2 style="color: white; font-family: Arial; text-shadow: 2px 2px 0px #062a6e;">HINO DA IMPÉRIO</h2>
 
-<audio id="hino" src="hino.mp3.mp3"></audio>
+<audio id="hino" src="hino.mp3"></audio>
 <button onclick="tocarHino()" id="botaoHino" style="background:white; color:#0b4db3; border:none; 
 padding:12px 25px; font-size:18px; font-weight:bold; border-radius:30px; cursor:pointer;">
   ▶️ TOCAR HINO DA IMPÉRIO
 </button>
-
 
 <script>
 function tocarMusica() {
